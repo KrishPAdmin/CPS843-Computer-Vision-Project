@@ -162,8 +162,6 @@ project_root/
 
 ### Color stability vs plate_conf (clip-level)
 
-> strict = mode_ratio ≥ 0.70  |  lenient = mode_ratio ≥ 0.60
-
 | min `plate_conf` | # preds kept | strict stable clips |
 | ---------------- | ------------ | ------------------- |
 | 0.0 (all) | 126 | 96.0% |
