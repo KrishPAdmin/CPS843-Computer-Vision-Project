@@ -13,9 +13,9 @@ Developed as a final project for **CPS843** (Toronto Metropolitan University).
 
 ---
 
-## 1. Repository contents
+## Repository contents
 
-### 1.1 Main scripts (this folder)
+### Main scripts (this folder)
 
 These are the scripts included in this repo and what each one does.
 
@@ -91,7 +91,7 @@ These are the scripts included in this repo and what each one does.
 
 ---
 
-### 1.2 Example directory layout (outside of this folder)
+### Example directory layout (outside of this folder)
 
 This repo assumes a structure roughly like:
 
@@ -118,3 +118,65 @@ project_root/
     ├── vehicle_events_example.csv
     ├── vehicles_refined_example.csv
     └── alerts_example.csv
+```
+### Make+Model accuracy vs plate_conf
+
+| min `plate_conf` | # preds kept | strict exact-match | lenient (punct/space-insensitive) |
+| ---------------- | ------------ | ------------------ | --------------------------------- |
+| 0.0 (all) | 126 | 4.8% | 4.8% |
+| 0.2 | 85 | 7.1% | 7.1% |
+| 0.3 | 67 | 7.5% | 7.5% |
+| 0.4 | 51 | 9.8% | 9.8% |
+| 0.5 | 34 | 8.8% | 8.8% |
+| 0.6 | 25 | 12.0% | 12.0% |
+| 0.7 | 16 | 12.5% | 12.5% |
+| 0.8 | 10 | 10.0% | 10.0% |
+
+### Vehicle type accuracy vs plate_conf
+
+| min `plate_conf` | # preds kept | strict exact-match | lenient (van≈truck, bike≈motorcycle) |
+| ---------------- | ------------ | ------------------ | ------------------------------------ |
+| 0.0 (all) | 126 | 56.3% | 56.3% |
+| 0.2 | 85 | 57.6% | 57.6% |
+| 0.3 | 67 | 61.2% | 61.2% |
+| 0.4 | 51 | 58.8% | 58.8% |
+| 0.5 | 34 | 64.7% | 64.7% |
+| 0.6 | 25 | 60.0% | 60.0% |
+| 0.7 | 16 | 62.5% | 62.5% |
+| 0.8 | 10 | 60.0% | 60.0% |
+
+### Color stability vs plate_conf (clip-level)
+
+> strict = mode_ratio ≥ 0.70  |  lenient = mode_ratio ≥ 0.60
+
+| min `plate_conf` | # preds kept | strict stable clips | lenient stable clips |
+| ---------------- | ------------ | ------------------- | -------------------- |
+| 0.0 (all) | 126 | 96.0% | 99.0% |
+| 0.2 | 85 | 97.4% | 97.4% |
+| 0.3 | 67 | 98.4% | 98.4% |
+| 0.4 | 51 | 97.9% | 97.9% |
+| 0.5 | 34 | 96.9% | 96.9% |
+| 0.6 | 25 | 100.0% | 100.0% |
+| 0.7 | 16 | 100.0% | 100.0% |
+| 0.8 | 10 | 100.0% | 100.0% |
+
+
+
+### Acknowledgements/References:
+[1] R. Laroca et al., “A robust real-time automatic license plate recognition based on the YOLO detector,” in Proc. Int. Joint Conf. Neural Networks (IJCNN), Rio de Janeiro, Brazil, 2018, doi: 10.1109/IJCNN.2018.8489629.
+
+[2] J. Krause, J. Deng, M. Stark, and L. Fei-Fei, “Collecting a large-scale dataset of fine-grained cars,” in Proc. 1st IEEE Workshop on Fine-Grained Visual Classification (FGVC2), in conjunction with IEEE Conf. Computer Vision and Pattern Recognition (CVPR), Portland, OR, USA, 2013.
+
+[3] UFPR Vision, Robotics and Imaging Lab, “UFPR-ALPR Dataset,” Federal University of Paraná, Brazil. [Online]. Available: https://web.inf.ufpr.br/vri/databases/ufpr-alpr/.
+
+[4] Stanford Vision Lab, “Stanford Cars Dataset.” [Online]. Available: https://ai.stanford.edu/~jkrause/cars/car_dataset.html. 
+
+[5] G. Jocher, A. Chaurasia, and J. Qiu, “Ultralytics YOLOv8,” GitHub repository. [Online]. Available: https://github.com/ultralytics/ultralytics.
+
+[6] A. Paszke et al., “PyTorch: An imperative style, high-performance deep learning library,” in Advances in Neural Information Processing Systems 32 (NeurIPS 2019), 2019.
+
+[7] G. Bradski, “The OpenCV library,” Dr. Dobb’s Journal of Software Tools, 2000.
+
+[8] JaidedAI, “EasyOCR,” GitHub repository. [Online]. Available: https://github.com/JaidedAI/EasyOCR.
+
+[9] OpenAI, “ChatGPT” [Large language model]. [Online]. Available: https://chat.openai.com/
