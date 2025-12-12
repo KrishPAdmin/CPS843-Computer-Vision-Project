@@ -119,6 +119,21 @@ project_root/
     ├── vehicles_refined_example.csv
     └── alerts_example.csv
 ```
+---
+## Results of Experiments
+
+### Number Plate accuracy (plate_conf)
+| min `plate_conf` | # preds kept | strict exact-match | lenient (I/L/1 & O/0/Q) |
+| ---------------- | ------------ | ------------------ | ----------------------- |
+| 0.0 (all)        | 126          | **25.4%**          | **30.2%**               |
+| 0.2              | 85           | 37.6%              | 43.5%                   |
+| 0.3              | 67           | 46.3%              | 52.2%                   |
+| 0.4              | 51           | 49.0%              | 56.9%                   |
+| 0.5              | 34           | **58.8%**          | **64.7%**               |
+| 0.6              | 25           | 60.0%              | 68.0%                   |
+| 0.7              | 16           | 68.8%              | 75.0%                   |
+| 0.8              | 10           | 80.0%              | 80.0%                   |
+
 ### Make+Model accuracy vs plate_conf
 
 | min `plate_conf` | # preds kept | strict exact-match | lenient (punct/space-insensitive) |
